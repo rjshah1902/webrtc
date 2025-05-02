@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import Pusher from 'pusher-js';
 import Peer from 'simple-peer';
 import axios from 'axios';
+import baseUrl from '../base-url/baseUrl';
 
 const CallerComponent = ({ userId, receiverId }) => {
     const localVideo = useRef();
@@ -92,7 +93,7 @@ const CallerComponent = ({ userId, receiverId }) => {
 
             try {
                 // Send the offer signal to the server
-                const response = await axios.post('http://127.0.0.1:8000/api/create-call', {
+                const response = await axios.post(baseUrl + 'api/create-call', {
                     callerId: userId,
                     receiverId: receiverId,
                     callId: newCallId,
@@ -137,7 +138,7 @@ const CallerComponent = ({ userId, receiverId }) => {
         }
 
         // Notify the server that the call has ended
-        axios.post('http://127.0.0.1:8000/api/end-call', {
+        axios.post(baseUrl + 'api/end-call', {
             callId: callId
         }).catch(error => {
             console.error("Error ending call:", error);
