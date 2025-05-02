@@ -1,3 +1,0 @@
-const baseUrl = "https://970b-2405-201-3019-70a6-21c3-55a5-9770-f771.ngrok-free.app/";
-
-export default baseUrl;
