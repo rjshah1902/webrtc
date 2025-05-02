@@ -1,8 +1,10 @@
 "use client";
+
 import { useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 import ReceiverComponent from '../component/ReceiverComponent';
 
-export default function ReceivePage() {
+function InnerReceivePage() {
     const searchParams = useSearchParams();
     const userId = searchParams.get('userId') || '2';
 
@@ -10,5 +12,13 @@ export default function ReceivePage() {
         <div className="container mx-auto py-8">
             <ReceiverComponent userId={userId} />
         </div>
+    );
+}
+
+export default function ReceivePage() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <InnerReceivePage />
+        </Suspense>
     );
 }
