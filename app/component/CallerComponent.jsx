@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from 'react';
 import Pusher from 'pusher-js';
 import Peer from 'simple-peer';
 import axios from 'axios';
-import baseUrl from '../base-url/baseUrl';
 
 const CallerComponent = ({ userId, receiverId }) => {
     const localVideo = useRef();
