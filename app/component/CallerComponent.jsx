@@ -93,7 +93,7 @@ const CallerComponent = ({ userId, receiverId }) => {
 
             try {
                 // Send the offer signal to the server
-                const response = await axios.post(baseUrl + 'api/create-call', {
+                const response = await axios.post('https://970b-2405-201-3019-70a6-21c3-55a5-9770-f771.ngrok-free.app/api/create-call', {
                     callerId: userId,
                     receiverId: receiverId,
                     callId: newCallId,
@@ -138,7 +138,7 @@ const CallerComponent = ({ userId, receiverId }) => {
         }
 
         // Notify the server that the call has ended
-        axios.post(baseUrl + 'api/end-call', {
+        axios.post('https://970b-2405-201-3019-70a6-21c3-55a5-9770-f771.ngrok-free.app/api/end-call', {
             callId: callId
         }).catch(error => {
             console.error("Error ending call:", error);

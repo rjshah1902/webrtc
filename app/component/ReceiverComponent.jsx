@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from 'react';
 import Pusher from 'pusher-js';
 import Peer from 'simple-peer';
 import axios from 'axios';
-import baseUrl from '../base-url/baseUrl';
 
 const ReceiverComponent = ({ userId }) => {
     const localVideo = useRef();
@@ -97,7 +96,7 @@ const ReceiverComponent = ({ userId }) => {
 
             try {
                 // Send the answer signal to the server
-                await axios.post(baseUrl + 'api/answer-call', {
+                await axios.post('https://970b-2405-201-3019-70a6-21c3-55a5-9770-f771.ngrok-free.app/api/answer-call', {
                     callId: incomingCall.callId,
                     callerId: incomingCall.callerId,
                     receiverId: userId,
@@ -139,7 +138,7 @@ const ReceiverComponent = ({ userId }) => {
     const rejectCall = () => {
         if (incomingCall) {
             // Notify the server that the call was rejected
-            axios.post(baseUrl + 'api/reject-call', {
+            axios.post('https://970b-2405-201-3019-70a6-21c3-55a5-9770-f771.ngrok-free.app/api/reject-call', {
                 callId: incomingCall.callId,
                 callerId: incomingCall.callerId,
                 receiverId: userId
@@ -159,7 +158,7 @@ const ReceiverComponent = ({ userId }) => {
 
         if (incomingCall) {
             // Notify the server that the call has ended
-            axios.post(baseUrl + 'api/end-call', {
+            axios.post('https://970b-2405-201-3019-70a6-21c3-55a5-9770-f771.ngrok-free.app/api/end-call', {
                 callId: incomingCall.callId
             }).catch(error => {
                 console.error("Error ending call:", error);
